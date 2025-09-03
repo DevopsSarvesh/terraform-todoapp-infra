@@ -1,5 +1,16 @@
+name: "Dhondhu Maharaj"
+
 on: 
   push:
     branches:
-      - 'main/**'
       - 'features/**'
+      - 'main'
+      - 'hotfix/**'
+jobs:
+  terraformInit:
+    name: dhondhu-maharaj
+    runs-on: devops-boss
+    steps:
+    - name: dhondhu maharaj rocks!
+      run: echo sarvesh-devops
+      
