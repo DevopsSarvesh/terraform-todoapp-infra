@@ -2,6 +2,10 @@ name: "Lucky-Kabootar"
 
 on: workflow_dispatch
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   terrafor-job:
     name: infra ki pipeline
