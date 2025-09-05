@@ -2,15 +2,14 @@ name: "Lucky-Kabootar"
 
 on: workflow_dispatch
 
-
-
 jobs:
   terrafor-job:
     name: infra ki pipeline
-    runs-on: devops-boss
-permissions:
-  id-token: write
-  contents: read  
+    runs-on: devops-boss 
+    permissions:
+      id-token: write
+      contents: read 
+    
     steps:
       - name: checkout
         uses: actions/checkout@v5.0.0
