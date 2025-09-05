@@ -6,7 +6,7 @@ permissions:
   contents: read 
   
 jobs:
-  terrafor-job:
+  terraform-init-plan:
     name: infra ki pipeline
     runs-on: devops-boss
     
@@ -43,8 +43,31 @@ jobs:
         run: terraform plan -no-color -input=false
         working-directory: environments/dev
           
-           
+  terrafor-apply:
+    runs-on: devops-boss 
+    needs: terraform-init-plan
+    environment: dev
+    steps:
+      - name: checkout
+        uses: actions/checkout@v5.0.0
 
+      - name: Azure Login
+        uses: Azure/login@v2.3.0
+        with:
+          client-id: 6fcde995-cafd-4faa-a207-3fd32a956c51
+          tenant-id: f09cd6a0-7740-4a44-a8a5-c9e688f5f0fc
+          subscription-id: 9f199aee-1ad7-464f-bd74-4b88ef990086
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -input=false
+        working-directory: environments/dev
+
+      - name: Terraform apply
+        id: apply
+        run: terraform apply --auto-approve
+        continue-on-error: true
+        working-directory: environments/dev
 
         
  
