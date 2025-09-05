@@ -1,14 +1,14 @@
 name: "Lucky-Kabootar"
 
 on: workflow_dispatch
-
+permissions:
+  id-token: write
+  contents: read 
+  
 jobs:
   terrafor-job:
     name: infra ki pipeline
-    runs-on: devops-boss 
-    permissions:
-      id-token: write
-      contents: read 
+    runs-on: devops-boss
     
     steps:
       - name: checkout
@@ -25,7 +25,12 @@ jobs:
         id: fmt
         run: terraform fmt -check
         continue-on-error: true
-        
+        working-directory: environments/dev
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -input=false
+        working-directory: environments/dev
       
           
            
