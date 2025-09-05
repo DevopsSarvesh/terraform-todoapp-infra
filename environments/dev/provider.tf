@@ -6,13 +6,13 @@ terraform {
     }
   }
 
-  #   backend "azurerm" {
-  #     resource_group_name   = "rg-dev-todoapp"
-  #     storage_account_name  = "sadevtodoapp"
-  #     container_name        = "tfstate"
-  #     key                   = "dev.terraform.tfstate"
+  backend "azurerm" {
+    resource_group_name  = "rg-dev-todoapp"
+    storage_account_name = "sagithub"
+    container_name       = "tfstate"
+    key                  = "dev.tfstate"
 
-  #   }
+  }
 }
 
 provider "azurerm" {
