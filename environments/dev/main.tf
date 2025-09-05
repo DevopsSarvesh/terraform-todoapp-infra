@@ -1,6 +1,6 @@
 locals {
   common_tags = {
-    "ManagedBy"  = "terraform"
+    "ManagedBy"   = "terraform"
     "Environment" = "dev"
     "Project"     = "todoapp"
   }
