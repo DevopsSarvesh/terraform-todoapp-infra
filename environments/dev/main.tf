@@ -53,3 +53,14 @@ module "aks" {
   tags       = local.common_tags
 }
 
+module "pip" {
+  depends_on    = [ module.rg ]
+  source        = "../../modules/azurerm_public_ip"
+  pip_name      = "pip-dev-todoapp"
+  rg_name       = rg-dev-todoapp
+  location      = "centralindia"
+  sku           = "Basic"
+  tags          = local.common_tags
+  
+}
+
