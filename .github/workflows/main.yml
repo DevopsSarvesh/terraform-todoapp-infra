@@ -1,6 +1,13 @@
-name: "Lucky-Kabootar"
+name: "Dev-terraform-GitHubAction-Workflow"
 
-on: workflow_dispatch
+on: 
+ pull_request:
+   branches:
+     - main
+ push:
+   branches:
+     - main
+     
 permissions:
   id-token: write
   contents: read 
@@ -45,6 +52,7 @@ jobs:
           
   terrafor-apply:
     runs-on: devops-boss 
+    if: github.ref == 'refs/heads/main'
     needs: terraform-init-plan
     environment: dev
     steps:
